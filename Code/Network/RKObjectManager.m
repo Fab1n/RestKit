@@ -584,7 +584,8 @@ static NSString *RKMIMETypeFromAFHTTPClientParameterEncoding(AFHTTPClientParamet
     operation.managedObjectCache = self.managedObjectStore.managedObjectCache;
     operation.fetchRequestBlocks = self.fetchRequestBlocks;
     
-    operation.managedObjectContext = managedObjectContext ?: self.managedObjectStore.mainQueueManagedObjectContext;
+    managedObjectContext = managedObjectContext ?: self.managedObjectStore.mainQueueManagedObjectContext;
+    operation.managedObjectContext = [self.managedObjectStore newChildOfManagedObjectContext:managedObjectContext withConcurrencyType:NSPrivateQueueConcurrencyType tracksChanges:NO];
     
     return operation;
 }

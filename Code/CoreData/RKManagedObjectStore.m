@@ -378,7 +378,7 @@ static char RKManagedObjectContextNonNestedChangeMergingObserverAssociationKey;
 - (void)createNonNestedManagedObjectContexts
 {
     // Create an MOC for use on the main queue
-    self.mainQueueManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    self.mainQueueManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     self.mainQueueManagedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
     self.mainQueueManagedObjectContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
     
